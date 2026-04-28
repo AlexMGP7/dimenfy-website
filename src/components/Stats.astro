@@ -1,0 +1,71 @@
+---
+---
+
+<section class="stats section" id="resultados">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="150" data-prefix="+" data-suffix="%">
+          <span class="accent">+</span><span class="counter">0</span>%
+        </div>
+        <div class="stat-label">Tráfico orgánico promedio</div>
+      </div>
+
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-number" data-target="80" data-prefix="+" data-suffix="%">
+          <span class="accent">+</span><span class="counter">0</span>%
+        </div>
+        <div class="stat-label">Engagement promedio</div>
+      </div>
+
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-number" data-target="200" data-prefix="" data-suffix="+">
+          <span class="counter">0</span><span class="accent">+</span>
+        </div>
+        <div class="stat-label">Proyectos lanzados</div>
+      </div>
+
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-number" data-target="98" data-prefix="" data-suffix="%">
+          <span class="counter">0</span>%
+        </div>
+        <div class="stat-label">Clientes satisfechos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Animated counter with Intersection Observer
+  const counters = document.querySelectorAll('.counter');
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const counter = entry.target as HTMLElement;
+          const parent = counter.closest('.stat-number') as HTMLElement;
+          const target = parseInt(parent?.dataset.target || '0');
+
+          let current = 0;
+          const increment = target / 60;
+          const duration = 2000;
+          const stepTime = duration / 60;
+
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            counter.textContent = Math.round(current).toString();
+          }, stepTime);
+
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach((counter) => counterObserver.observe(counter));
+</script>

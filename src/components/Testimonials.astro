@@ -1,0 +1,95 @@
+---
+const testimonials = [
+  {
+    quote: 'dimenfy transformó por completo nuestra presencia digital. En 3 meses triplicamos nuestros leads y ahora aparecemos primeros en Google para nuestras keywords principales.',
+    name: 'María González',
+    role: 'CEO, NovaTech Solutions',
+    initials: 'MG',
+  },
+  {
+    quote: 'Lo que más nos gustó fue su enfoque estratégico. No son solo creativos — entienden de negocios. Cada decisión estaba respaldada por datos reales.',
+    name: 'Carlos Mendoza',
+    role: 'Director de Marketing, FitLife Academy',
+    initials: 'CM',
+  },
+  {
+    quote: 'Nuestro Instagram pasó de ser un tablón de anuncios a una comunidad real. El engagement se disparó y las ventas desde redes se multiplicaron por 5.',
+    name: 'Ana Rodríguez',
+    role: 'Fundadora, Café Orgánico MX',
+    initials: 'AR',
+  },
+  {
+    quote: 'El sitio web que nos crearon no solo es hermoso — convierte. Nuestra tasa de conversión subió un 180% desde el lanzamiento.',
+    name: 'Diego Herrera',
+    role: 'CTO, Estudio Lumina',
+    initials: 'DH',
+  },
+  {
+    quote: 'Trabajar con dimenfy es como tener un equipo de marketing completo in-house. Reportes claros, comunicación constante y resultados que hablan solos.',
+    name: 'Sofía Castillo',
+    role: 'COO, Grupo Avante',
+    initials: 'SC',
+  },
+  {
+    quote: 'Nos ayudaron a construir una marca desde cero en digital. Hoy somos referentes en nuestro sector gracias a su estrategia de contenido y SEO.',
+    name: 'Roberto Fuentes',
+    role: 'Fundador, EcoVerde',
+    initials: 'RF',
+  },
+];
+
+// Duplicate for infinite marquee
+const allTestimonials = [...testimonials, ...testimonials];
+---
+
+<section class="testimonials section" id="testimonios">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Testimonios</span>
+      <h2 class="section-title">Lo que dicen de nosotros</h2>
+      <p class="section-subtitle">
+        No nos creas a nosotros. Escucha a quienes ya transformaron su marca con dimenfy.
+      </p>
+    </div>
+  </div>
+
+  <div class="testimonials-marquee" style="margin-top: var(--space-2xl);">
+    <div class="testimonials-track animate-marquee">
+      {allTestimonials.map((testimonial) => (
+        <div class="testimonial-card">
+          <div class="testimonial-quote">
+            {testimonial.quote}
+          </div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">{testimonial.initials}</div>
+            <div>
+              <div class="testimonial-name">{testimonial.name}</div>
+              <div class="testimonial-role">{testimonial.role}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-marquee {
+    overflow: hidden;
+    width: 100%;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+  }
+</style>

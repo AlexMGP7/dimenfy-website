@@ -1,0 +1,68 @@
+---
+---
+
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="/" class="navbar-logo">dimen<span>fy</span></a>
+
+    <div class="navbar-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+
+    <div class="navbar-cta">
+      <a href="#contacto" class="btn btn-primary">Hablemos</a>
+    </div>
+
+    <button class="navbar-toggle" id="navbar-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="navbar-mobile" id="navbar-mobile">
+  <a href="#servicios" class="mobile-link">Servicios</a>
+  <a href="#proceso" class="mobile-link">Proceso</a>
+  <a href="#proyectos" class="mobile-link">Proyectos</a>
+  <a href="#contacto" class="mobile-link">Contacto</a>
+  <a href="#contacto" class="btn btn-primary">Hablemos</a>
+</div>
+
+<script>
+  // Navbar scroll behavior
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 50) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+    lastScroll = currentScroll;
+  });
+
+  // Mobile menu toggle
+  const toggle = document.getElementById('navbar-toggle');
+  const mobileMenu = document.getElementById('navbar-mobile');
+
+  toggle?.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    mobileMenu?.classList.toggle('open');
+    document.body.style.overflow = mobileMenu?.classList.contains('open') ? 'hidden' : '';
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle?.classList.remove('active');
+      mobileMenu?.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>

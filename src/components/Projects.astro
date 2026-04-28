@@ -1,0 +1,151 @@
+---
+const projects = [
+  {
+    title: 'NovaTech Solutions',
+    category: 'Desarrollo Web + SEO',
+    description: 'Rediseño completo y estrategia SEO que triplicó el tráfico orgánico en 4 meses.',
+    gradient: 'linear-gradient(135deg, #0066FF 0%, #1A1A2E 100%)',
+  },
+  {
+    title: 'Café Orgánico MX',
+    category: 'Redes Sociales + Contenido',
+    description: 'De 2K a 45K seguidores en Instagram con una estrategia de contenido auténtico.',
+    gradient: 'linear-gradient(135deg, #1A1A2E 0%, #0044CC 100%)',
+  },
+  {
+    title: 'FitLife Academy',
+    category: 'Marketing Integral',
+    description: 'Ecosistema digital completo: web, redes, SEO y contenido. +200% en leads calificados.',
+    gradient: 'linear-gradient(135deg, #0044CC 0%, #3D8BFF 100%)',
+  },
+  {
+    title: 'Estudio Lumina',
+    category: 'Desarrollo Web',
+    description: 'Portfolio interactivo premiado con diseño inmersivo y animaciones de alto impacto.',
+    gradient: 'linear-gradient(135deg, #3D8BFF 0%, #0066FF 100%)',
+  },
+];
+---
+
+<section class="projects section" id="proyectos">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Proyectos</span>
+      <h2 class="section-title">Lo que hemos construido</h2>
+      <p class="section-subtitle">
+        Cada proyecto es un ecosistema único. Aquí algunos de los resultados que nos enorgullecen.
+      </p>
+    </div>
+  </div>
+
+  <div class="projects-scroll">
+    {projects.map((project, index) => (
+      <div class={`project-card reveal reveal-delay-${index + 1}`}>
+        <div class="project-image" style={`background: ${project.gradient};`}>
+          <div class="project-mockup">
+            <div class="mockup-browser">
+              <div class="mockup-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="mockup-content">
+                <div class="mockup-bar"></div>
+                <div class="mockup-text"></div>
+                <div class="mockup-text short"></div>
+                <div class="mockup-grid-placeholder">
+                  <div></div><div></div><div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <span class="btn btn-secondary" style="font-size: 0.75rem; padding: 8px 20px;">Ver proyecto →</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-category">{project.category}</span>
+          <h3>{project.title}</h3>
+          <p>{project.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .project-mockup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+  }
+
+  .mockup-browser {
+    width: 85%;
+    max-width: 340px;
+    background: rgba(10, 10, 15, 0.6);
+    border-radius: 8px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  .mockup-dots {
+    display: flex;
+    gap: 6px;
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .mockup-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .mockup-dots span:first-child { background: #ff5f57; }
+  .mockup-dots span:nth-child(2) { background: #ffbd2e; }
+  .mockup-dots span:last-child { background: #28c840; }
+
+  .mockup-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .mockup-bar {
+    width: 60%;
+    height: 8px;
+    background: rgba(0, 102, 255, 0.4);
+    border-radius: 4px;
+  }
+
+  .mockup-text {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+  }
+
+  .mockup-text.short {
+    width: 70%;
+  }
+
+  .mockup-grid-placeholder {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .mockup-grid-placeholder div {
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+  }
+</style>

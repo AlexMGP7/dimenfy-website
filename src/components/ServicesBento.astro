@@ -1,0 +1,60 @@
+---
+const services = [
+  {
+    icon: '🌐',
+    tag: 'Desarrollo Web',
+    title: 'Tu mejor vendedor, 24/7',
+    description: 'Diseñamos y desarrollamos sitios web que no solo se ven increíbles — convierten visitantes en clientes. Rápidos, responsivos y optimizados para resultados.',
+    features: ['Landing Pages', 'E-commerce', 'Web Apps', 'Optimización UX'],
+  },
+  {
+    icon: '📱',
+    tag: 'Redes Sociales',
+    title: 'De seguidores a clientes reales',
+    description: 'Gestión estratégica que va más allá de publicar bonito. Creamos comunidad, generamos engagement y convertimos tu audiencia en revenue.',
+    features: ['Instagram', 'TikTok', 'LinkedIn', 'Meta Ads'],
+  },
+  {
+    icon: '🔍',
+    tag: 'Posicionamiento SEO',
+    title: 'Aparece donde te buscan',
+    description: 'Posicionamos tu marca en los primeros resultados de Google. Tráfico orgánico cualificado que llega a ti sin pagar por cada clic.',
+    features: ['SEO Técnico', 'Keywords', 'Link Building', 'Local SEO'],
+  },
+  {
+    icon: '🎬',
+    tag: 'Creación de Contenido',
+    title: 'Historias que nadie puede ignorar',
+    description: 'Contenido visual y escrito que captura la atención, cuenta tu historia y hace que tu audiencia vuelva por más. Cada pieza con propósito.',
+    features: ['Video', 'Fotografía', 'Copywriting', 'Branding'],
+  },
+];
+---
+
+<section class="services section" id="servicios">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Servicios</span>
+      <h2 class="section-title">Cuatro dimensiones, un objetivo</h2>
+      <p class="section-subtitle">
+        Cada servicio es una pieza del ecosistema. Juntos, son imparables.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((service, index) => (
+        <div class={`service-card reveal reveal-delay-${index + 1}`}>
+          <div class="service-icon">{service.icon}</div>
+          <span class="service-tag">{service.tag}</span>
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+          <div class="service-features">
+            {service.features.map((feature) => (
+              <span class="service-feature-tag">{feature}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

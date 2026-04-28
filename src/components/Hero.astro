@@ -1,0 +1,124 @@
+---
+---
+
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <canvas id="hero-canvas"></canvas>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-label">
+      <span>✦</span> Agencia de Marketing Integral
+    </div>
+
+    <h1>
+      Tu marca merece más que existir en internet.<br />
+      <em>Merece dominar cada dimensión.</em>
+    </h1>
+
+    <p class="hero-subtitle">
+      Somos dimenfy. Transformamos tu presencia digital en resultados reales 
+      con estrategia, creatividad y tecnología.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contacto" class="btn btn-primary">
+        Agenda tu consulta gratis
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="#servicios" class="btn btn-secondary">
+        Conoce nuestros servicios ↓
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-indicator">
+    <div class="mouse">
+      <div class="wheel"></div>
+    </div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<script>
+  // Animated dot grid background
+  const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement;
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let animationId: number;
+    let time = 0;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function draw() {
+      if (!ctx) return;
+      const w = canvas.width;
+      const h = canvas.height;
+
+      ctx.clearRect(0, 0, w, h);
+
+      const spacing = 40;
+      const cols = Math.ceil(w / spacing);
+      const rows = Math.ceil(h / spacing);
+
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          const x = i * spacing + spacing / 2;
+          const y = j * spacing + spacing / 2;
+
+          // Distance from center
+          const cx = w / 2;
+          const cy = h / 2;
+          const dist = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
+          const maxDist = Math.sqrt(cx ** 2 + cy ** 2);
+          const normalizedDist = dist / maxDist;
+
+          // Breathing effect
+          const breathe = Math.sin(time * 0.8 + dist * 0.003) * 0.5 + 0.5;
+          const alpha = (1 - normalizedDist * 0.8) * breathe * 0.25;
+
+          if (alpha > 0.02) {
+            ctx.beginPath();
+            ctx.arc(x, y, 1.2, 0, Math.PI * 2);
+
+            // Color mix based on position
+            const blueInfluence = 1 - normalizedDist;
+            const r = Math.round(0 * blueInfluence);
+            const g = Math.round(102 * blueInfluence + 191 * (1 - blueInfluence) * 0.1);
+            const b = Math.round(255 * blueInfluence);
+
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+            ctx.fill();
+          }
+        }
+      }
+
+      time += 0.016;
+      animationId = requestAnimationFrame(draw);
+    }
+
+    resize();
+    draw();
+    window.addEventListener('resize', resize);
+
+    // Cleanup on page navigation
+    document.addEventListener('astro:before-swap', () => {
+      cancelAnimationFrame(animationId);
+    });
+  }
+</script>
+
+<style>
+  #hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+</style>

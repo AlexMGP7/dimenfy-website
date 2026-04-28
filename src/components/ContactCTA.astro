@@ -1,0 +1,123 @@
+---
+---
+
+<section class="contact-cta section" id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-text reveal">
+        <span class="section-label">Contacto</span>
+        <h2>¿Listo para que tu marca deje de ser <em>invisible</em>?</h2>
+        <p>
+          El primer paso es un "hola". Cuéntanos qué necesitas 
+          y te respondemos en menos de 24 horas. Sin compromiso, sin letras pequeñas.
+        </p>
+
+        <div class="contact-info-items">
+          <div class="contact-info-item">
+            <span class="contact-info-icon">📧</span>
+            <span>hola@dimenfy.com</span>
+          </div>
+          <div class="contact-info-item">
+            <span class="contact-info-icon">📍</span>
+            <span>Remoto — Donde estés, estamos</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrapper reveal reveal-delay-2">
+        <form class="contact-form" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" name="name" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="company">Empresa</label>
+              <input type="text" id="company" name="company" placeholder="Tu empresa" />
+            </div>
+            <div class="form-group">
+              <label for="service">Servicio de interés</label>
+              <select id="service" name="service">
+                <option value="" disabled selected>Selecciona un servicio</option>
+                <option value="web">Desarrollo Web</option>
+                <option value="redes">Redes Sociales</option>
+                <option value="seo">SEO</option>
+                <option value="contenido">Creación de Contenido</option>
+                <option value="integral">Marketing Integral</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" placeholder="Cuéntanos sobre tu proyecto..." rows="4"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            Enviar mensaje
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-info-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .contact-info-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .contact-form-wrapper {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) {
+      btn.textContent = '¡Mensaje enviado! ✓';
+      btn.classList.remove('btn-primary');
+      btn.classList.add('btn-accent');
+      
+      setTimeout(() => {
+        btn.innerHTML = 'Enviar mensaje <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        btn.classList.remove('btn-accent');
+        btn.classList.add('btn-primary');
+        (form as HTMLFormElement).reset();
+      }, 3000);
+    }
+  });
+</script>

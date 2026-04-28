@@ -1,0 +1,41 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Diagnóstico',
+    description: 'Analizamos tu marca, tu mercado y tu competencia para encontrar las oportunidades que otros ignoran. Sin diagnóstico no hay estrategia.',
+  },
+  {
+    number: '02',
+    title: 'Estrategia',
+    description: 'Diseñamos un plan integral a medida, con KPIs claros y un roadmap que tiene sentido. Cada acción tiene un por qué.',
+  },
+  {
+    number: '03',
+    title: 'Ejecución + Iteración',
+    description: 'Ejecutamos, medimos, optimizamos. Cada mes ves exactamente qué está funcionando, qué ajustamos y por qué crecemos.',
+  },
+];
+---
+
+<section class="process section" id="proceso">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Proceso</span>
+      <h2 class="section-title">Así construimos resultados</h2>
+      <p class="section-subtitle">
+        Sin improvisaciones. Un método probado que convierte la incertidumbre en crecimiento medible.
+      </p>
+    </div>
+
+    <div class="process-grid">
+      {steps.map((step, index) => (
+        <div class={`process-step reveal reveal-delay-${index + 1}`}>
+          <div class="process-number">{step.number}</div>
+          <h3>{step.title}</h3>
+          <p>{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
