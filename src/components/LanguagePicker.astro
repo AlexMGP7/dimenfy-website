@@ -1,16 +1,22 @@
 ---
 import { languages } from '../i18n/ui';
-import { getRouteFromUrl } from '../i18n/utils';
+import { getLangFromUrl } from '../i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
-// Simple fallback if getRouteFromUrl is not yet implemented
-const currentUrl = Astro.url;
-const currentLang = currentUrl.pathname.startsWith('/es') ? 'es' : 'en';
+const currentLang = getLangFromUrl(Astro.url);
 
-// Strip the current language prefix from the path to get the route
-let route = currentUrl.pathname;
-if (currentLang === 'es' && route.startsWith('/es')) {
-  route = route.slice(3);
+let route = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
+
+// Strip base
+if (base && base !== '/' && route.startsWith(base)) {
+  route = route.replace(base, '');
+}
+if (!route.startsWith('/')) route = '/' + route;
+
+// Strip language prefix
+if (currentLang !== 'en' && route.startsWith(`/${currentLang}`)) {
+  route = route.replace(`/${currentLang}`, '');
 }
 if (route === '') route = '/';
 ---
