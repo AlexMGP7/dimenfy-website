@@ -1,39 +1,44 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const testimonials = [
   {
-    quote: 'dimenfy transformó por completo nuestra presencia digital. En 3 meses triplicamos nuestros leads y ahora aparecemos primeros en Google para nuestras keywords principales.',
+    quote: t('testimonials.1.q'),
     name: 'María González',
-    role: 'CEO, NovaTech Solutions',
+    role: t('testimonials.1.role'),
     initials: 'MG',
   },
   {
-    quote: 'Lo que más nos gustó fue su enfoque estratégico. No son solo creativos — entienden de negocios. Cada decisión estaba respaldada por datos reales.',
+    quote: t('testimonials.2.q'),
     name: 'Carlos Mendoza',
-    role: 'Director de Marketing, FitLife Academy',
+    role: t('testimonials.2.role'),
     initials: 'CM',
   },
   {
-    quote: 'Nuestro Instagram pasó de ser un tablón de anuncios a una comunidad real. El engagement se disparó y las ventas desde redes se multiplicaron por 5.',
+    quote: t('testimonials.3.q'),
     name: 'Ana Rodríguez',
-    role: 'Fundadora, Café Orgánico MX',
+    role: t('testimonials.3.role'),
     initials: 'AR',
   },
   {
-    quote: 'El sitio web que nos crearon no solo es hermoso — convierte. Nuestra tasa de conversión subió un 180% desde el lanzamiento.',
+    quote: t('testimonials.4.q'),
     name: 'Diego Herrera',
-    role: 'CTO, Estudio Lumina',
+    role: t('testimonials.4.role'),
     initials: 'DH',
   },
   {
-    quote: 'Trabajar con dimenfy es como tener un equipo de marketing completo in-house. Reportes claros, comunicación constante y resultados que hablan solos.',
+    quote: t('testimonials.5.q'),
     name: 'Sofía Castillo',
-    role: 'COO, Grupo Avante',
+    role: t('testimonials.5.role'),
     initials: 'SC',
   },
   {
-    quote: 'Nos ayudaron a construir una marca desde cero en digital. Hoy somos referentes en nuestro sector gracias a su estrategia de contenido y SEO.',
+    quote: t('testimonials.6.q'),
     name: 'Roberto Fuentes',
-    role: 'Fundador, EcoVerde',
+    role: t('testimonials.6.role'),
     initials: 'RF',
   },
 ];
@@ -45,10 +50,10 @@ const allTestimonials = [...testimonials, ...testimonials];
 <section class="testimonials section" id="testimonios">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">Testimonios</span>
-      <h2 class="section-title">Lo que dicen de nosotros</h2>
+      <span class="section-label">{t('testimonials.label')}</span>
+      <h2 class="section-title">{t('testimonials.title')}</h2>
       <p class="section-subtitle">
-        No nos creas a nosotros. Escucha a quienes ya transformaron su marca con dimenfy.
+        {t('testimonials.subtitle')}
       </p>
     </div>
   </div>

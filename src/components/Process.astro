@@ -1,19 +1,24 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const steps = [
   {
     number: '01',
-    title: 'Diagnóstico',
-    description: 'Analizamos tu marca, tu mercado y tu competencia para encontrar las oportunidades que otros ignoran. Sin diagnóstico no hay estrategia.',
+    title: t('process.1.title'),
+    description: t('process.1.desc'),
   },
   {
     number: '02',
-    title: 'Estrategia',
-    description: 'Diseñamos un plan integral a medida, con KPIs claros y un roadmap que tiene sentido. Cada acción tiene un por qué.',
+    title: t('process.2.title'),
+    description: t('process.2.desc'),
   },
   {
     number: '03',
-    title: 'Ejecución + Iteración',
-    description: 'Ejecutamos, medimos, optimizamos. Cada mes ves exactamente qué está funcionando, qué ajustamos y por qué crecemos.',
+    title: t('process.3.title'),
+    description: t('process.3.desc'),
   },
 ];
 ---
@@ -21,10 +26,10 @@ const steps = [
 <section class="process section" id="proceso">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">Proceso</span>
-      <h2 class="section-title">Así construimos resultados</h2>
+      <span class="section-label">{t('process.label')}</span>
+      <h2 class="section-title">{t('process.title')}</h2>
       <p class="section-subtitle">
-        Sin improvisaciones. Un método probado que convierte la incertidumbre en crecimiento medible.
+        {t('process.subtitle')}
       </p>
     </div>
 

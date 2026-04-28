@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const currentYear = new Date().getFullYear();
 ---
 
@@ -30,7 +34,7 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <p class="footer-copy">
-        © {currentYear} dimenfy. Todos los derechos reservados.
+        {t('footer.copy')}
       </p>
     </div>
   </div>

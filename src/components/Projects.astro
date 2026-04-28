@@ -1,27 +1,32 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const projects = [
   {
-    title: 'NovaTech Solutions',
-    category: 'Desarrollo Web + SEO',
-    description: 'Rediseño completo y estrategia SEO que triplicó el tráfico orgánico en 4 meses.',
+    title: t('projects.1.title'),
+    category: t('projects.1.cat'),
+    description: t('projects.1.desc'),
     gradient: 'linear-gradient(135deg, #0066FF 0%, #1A1A2E 100%)',
   },
   {
-    title: 'Café Orgánico MX',
-    category: 'Redes Sociales + Contenido',
-    description: 'De 2K a 45K seguidores en Instagram con una estrategia de contenido auténtico.',
+    title: t('projects.2.title'),
+    category: t('projects.2.cat'),
+    description: t('projects.2.desc'),
     gradient: 'linear-gradient(135deg, #1A1A2E 0%, #0044CC 100%)',
   },
   {
-    title: 'FitLife Academy',
-    category: 'Marketing Integral',
-    description: 'Ecosistema digital completo: web, redes, SEO y contenido. +200% en leads calificados.',
+    title: t('projects.3.title'),
+    category: t('projects.3.cat'),
+    description: t('projects.3.desc'),
     gradient: 'linear-gradient(135deg, #0044CC 0%, #3D8BFF 100%)',
   },
   {
-    title: 'Estudio Lumina',
-    category: 'Desarrollo Web',
-    description: 'Portfolio interactivo premiado con diseño inmersivo y animaciones de alto impacto.',
+    title: t('projects.4.title'),
+    category: t('projects.4.cat'),
+    description: t('projects.4.desc'),
     gradient: 'linear-gradient(135deg, #3D8BFF 0%, #0066FF 100%)',
   },
 ];
@@ -30,10 +35,10 @@ const projects = [
 <section class="projects section" id="proyectos">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">Proyectos</span>
-      <h2 class="section-title">Lo que hemos construido</h2>
+      <span class="section-label">{t('projects.label')}</span>
+      <h2 class="section-title">{t('projects.title')}</h2>
       <p class="section-subtitle">
-        Cada proyecto es un ecosistema único. Aquí algunos de los resultados que nos enorgullecen.
+        {t('projects.subtitle')}
       </p>
     </div>
   </div>
@@ -58,7 +63,7 @@ const projects = [
             </div>
           </div>
           <div class="project-overlay">
-            <span class="btn btn-secondary" style="font-size: 0.75rem; padding: 8px 20px;">Ver proyecto →</span>
+            <span class="btn btn-secondary" style="font-size: 0.75rem; padding: 8px 20px;">{t('projects.btn')}</span>
           </div>
         </div>
         <div class="project-info">

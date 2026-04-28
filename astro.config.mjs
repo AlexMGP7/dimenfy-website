@@ -7,4 +7,11 @@ export default defineConfig({
   integrations: [react()],
   site: 'https://AlexMGP7.github.io',
   base: '/dimenfy-website',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  }
 });

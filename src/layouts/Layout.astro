@@ -1,17 +1,21 @@
 ---
+import { getLangFromUrl } from '../i18n/utils';
+
 interface Props {
   title?: string;
   description?: string;
 }
 
+const lang = getLangFromUrl(Astro.url);
+
 const {
-  title = 'dimenfy — Agencia de Marketing Integral',
-  description = 'Transformamos tu presencia digital en resultados reales. Gestión de redes sociales, desarrollo web, SEO y creación de contenido.',
+  title = 'dimenfy',
+  description = 'Transformamos tu presencia digital en resultados reales.',
 } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +26,7 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_ES'} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />

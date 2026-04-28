@@ -1,0 +1,58 @@
+---
+import { languages } from '../i18n/ui';
+import { getRouteFromUrl } from '../i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+// Simple fallback if getRouteFromUrl is not yet implemented
+const currentUrl = Astro.url;
+const currentLang = currentUrl.pathname.startsWith('/es') ? 'es' : 'en';
+
+// Strip the current language prefix from the path to get the route
+let route = currentUrl.pathname;
+if (currentLang === 'es' && route.startsWith('/es')) {
+  route = route.slice(3);
+}
+if (route === '') route = '/';
+---
+
+<div class="lang-picker">
+  {Object.entries(languages).map(([lang, label]) => (
+    <a 
+      href={getRelativeLocaleUrl(lang, route)} 
+      class={`lang-link ${currentLang === lang ? 'active' : ''}`}
+    >
+      {label}
+    </a>
+  ))}
+</div>
+
+<style>
+  .lang-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 8px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+  }
+
+  .lang-link {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    padding: 4px 8px;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+  }
+
+  .lang-link:hover {
+    color: var(--color-text);
+  }
+
+  .lang-link.active {
+    background: var(--color-surface-hover);
+    color: var(--color-primary);
+  }
+</style>

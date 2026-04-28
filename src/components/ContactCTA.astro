@@ -1,15 +1,18 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="contact-cta section" id="contacto">
   <div class="container">
     <div class="contact-grid">
       <div class="contact-text reveal">
-        <span class="section-label">Contacto</span>
-        <h2>¿Listo para que tu marca deje de ser <em>invisible</em>?</h2>
+        <span class="section-label">{t('contact.label')}</span>
+        <h2>{t('contact.title1')} <br/><em>{t('contact.title2')}</em>?</h2>
         <p>
-          El primer paso es un "hola". Cuéntanos qué necesitas 
-          y te respondemos en menos de 24 horas. Sin compromiso, sin letras pequeñas.
+          {t('contact.subtitle')}
         </p>
 
         <div class="contact-info-items">
@@ -19,7 +22,7 @@
           </div>
           <div class="contact-info-item">
             <span class="contact-info-icon">📍</span>
-            <span>Remoto — Donde estés, estamos</span>
+            <span>{t('contact.info1')}</span>
           </div>
         </div>
       </div>
@@ -28,41 +31,41 @@
         <form class="contact-form" id="contact-form">
           <div class="form-row">
             <div class="form-group">
-              <label for="name">Nombre</label>
-              <input type="text" id="name" name="name" placeholder="Tu nombre" required />
+              <label for="name">{t('contact.form.name')}</label>
+              <input type="text" id="name" name="name" placeholder={t('contact.form.name.ph')} required />
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+              <label for="email">{t('contact.form.email')}</label>
+              <input type="email" id="email" name="email" placeholder={t('contact.form.email.ph')} required />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="company">Empresa</label>
-              <input type="text" id="company" name="company" placeholder="Tu empresa" />
+              <label for="company">{t('contact.form.company')}</label>
+              <input type="text" id="company" name="company" placeholder={t('contact.form.company.ph')} />
             </div>
             <div class="form-group">
-              <label for="service">Servicio de interés</label>
+              <label for="service">{t('contact.form.service')}</label>
               <select id="service" name="service">
-                <option value="" disabled selected>Selecciona un servicio</option>
-                <option value="web">Desarrollo Web</option>
-                <option value="redes">Redes Sociales</option>
-                <option value="seo">SEO</option>
-                <option value="contenido">Creación de Contenido</option>
-                <option value="integral">Marketing Integral</option>
+                <option value="" disabled selected>{t('contact.form.service.default')}</option>
+                <option value="web">{t('contact.form.service.1')}</option>
+                <option value="redes">{t('contact.form.service.2')}</option>
+                <option value="seo">{t('contact.form.service.3')}</option>
+                <option value="contenido">{t('contact.form.service.4')}</option>
+                <option value="integral">{t('contact.form.service.5')}</option>
               </select>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" placeholder="Cuéntanos sobre tu proyecto..." rows="4"></textarea>
+            <label for="message">{t('contact.form.message')}</label>
+            <textarea id="message" name="message" placeholder={t('contact.form.message.ph')} rows="4"></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%;">
-            Enviar mensaje
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <button type="submit" class="btn btn-primary" style="width: 100%;" data-success={t('contact.form.success')} data-default={t('contact.form.submit')}>
+            {t('contact.form.submit')}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="submit-icon">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
@@ -106,14 +109,17 @@
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    const btn = form.querySelector('button[type="submit"]');
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
     if (btn) {
-      btn.textContent = '¡Mensaje enviado! ✓';
+      const successText = btn.dataset.success || 'Success';
+      const defaultText = btn.dataset.default || 'Submit';
+      
+      btn.textContent = successText;
       btn.classList.remove('btn-primary');
       btn.classList.add('btn-accent');
       
       setTimeout(() => {
-        btn.innerHTML = 'Enviar mensaje <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        btn.innerHTML = `${defaultText} <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="submit-icon"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
         btn.classList.remove('btn-accent');
         btn.classList.add('btn-primary');
         (form as HTMLFormElement).reset();

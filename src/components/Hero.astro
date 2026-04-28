@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="hero" id="hero">
@@ -8,28 +12,27 @@
 
   <div class="hero-content">
     <div class="hero-label">
-      <span>✦</span> Agencia de Marketing Integral
+      <span>✦</span> {t('hero.label')}
     </div>
 
     <h1>
-      Tu marca merece más que existir en internet.<br />
-      <em>Merece dominar cada dimensión.</em>
+      {t('hero.title1')}<br />
+      <em>{t('hero.title2')}</em>
     </h1>
 
     <p class="hero-subtitle">
-      Somos dimenfy. Transformamos tu presencia digital en resultados reales 
-      con estrategia, creatividad y tecnología.
+      {t('hero.subtitle')}
     </p>
 
     <div class="hero-actions">
       <a href="#contacto" class="btn btn-primary">
-        Agenda tu consulta gratis
+        {t('hero.cta1')}
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
       <a href="#servicios" class="btn btn-secondary">
-        Conoce nuestros servicios ↓
+        {t('hero.cta2')}
       </a>
     </div>
   </div>
@@ -38,7 +41,7 @@
     <div class="mouse">
       <div class="wheel"></div>
     </div>
-    <span>Scroll</span>
+    <span>{t('hero.scroll')}</span>
   </div>
 </section>
 

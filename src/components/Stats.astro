@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="stats section" id="resultados">
@@ -8,28 +12,28 @@
         <div class="stat-number" data-target="150" data-prefix="+" data-suffix="%">
           <span class="accent">+</span><span class="counter">0</span>%
         </div>
-        <div class="stat-label">Tráfico orgánico promedio</div>
+        <div class="stat-label">{t('stats.1')}</div>
       </div>
 
       <div class="stat-item reveal reveal-delay-1">
         <div class="stat-number" data-target="80" data-prefix="+" data-suffix="%">
           <span class="accent">+</span><span class="counter">0</span>%
         </div>
-        <div class="stat-label">Engagement promedio</div>
+        <div class="stat-label">{t('stats.2')}</div>
       </div>
 
       <div class="stat-item reveal reveal-delay-2">
         <div class="stat-number" data-target="200" data-prefix="" data-suffix="+">
           <span class="counter">0</span><span class="accent">+</span>
         </div>
-        <div class="stat-label">Proyectos lanzados</div>
+        <div class="stat-label">{t('stats.3')}</div>
       </div>
 
       <div class="stat-item reveal reveal-delay-3">
         <div class="stat-number" data-target="98" data-prefix="" data-suffix="%">
           <span class="counter">0</span>%
         </div>
-        <div class="stat-label">Clientes satisfechos</div>
+        <div class="stat-label">{t('stats.4')}</div>
       </div>
     </div>
   </div>
