@@ -110,6 +110,23 @@ export const ui = {
     'contact.form.submit': 'Send message',
     'contact.form.success': 'Message sent! ✓',
 
+    // Chatbot
+    'chat.title': 'dimenfy AI',
+    'chat.status': 'Online',
+    'chat.placeholder': 'Type your message...',
+    'chat.send': 'Send',
+    'chat.msg1': 'Hi! I am the dimenfy virtual assistant 🤖. How can I help you scale your brand today?',
+    'chat.opt1': 'I need a website',
+    'chat.opt2': 'I need more sales (SEO/Ads)',
+    'chat.opt3': 'Social Media & Content',
+    'chat.opt4': 'Talk to a human',
+    'chat.reply.web': 'A new website is the best 24/7 salesperson! Leave me your email and one of our experts will contact you in less than 20 minutes.',
+    'chat.reply.sales': 'Growth is what we do best. Drop your email and a strategist will reach out with a custom plan.',
+    'chat.reply.social': 'Let\'s turn your followers into a real community. Leave your email and we\'ll contact you shortly.',
+    'chat.reply.human': 'Sure thing! Leave your email and a real human will get back to you right away.',
+    'chat.reply.thanks': 'Got it! 🚀 Our team will be in touch with you very soon.',
+    'chat.error.email': 'Please enter a valid email address.',
+
     // Footer
     'footer.copy': '© 2026 dimenfy. All rights reserved.',
   },
@@ -216,6 +233,23 @@ export const ui = {
     'contact.form.message.ph': 'Cuéntanos sobre tu proyecto...',
     'contact.form.submit': 'Enviar mensaje',
     'contact.form.success': '¡Mensaje enviado! ✓',
+
+    // Chatbot
+    'chat.title': 'dimenfy AI',
+    'chat.status': 'En línea',
+    'chat.placeholder': 'Escribe tu mensaje...',
+    'chat.send': 'Enviar',
+    'chat.msg1': '¡Hola! Soy el asistente virtual de dimenfy 🤖. ¿En qué puedo ayudarte a escalar tu marca hoy?',
+    'chat.opt1': 'Necesito una página web',
+    'chat.opt2': 'Necesito más ventas (SEO/Ads)',
+    'chat.opt3': 'Redes Sociales y Contenido',
+    'chat.opt4': 'Hablar con un humano',
+    'chat.reply.web': '¡Un sitio web nuevo es el mejor vendedor 24/7! Déjame tu correo y un experto te contactará en menos de 20 minutos.',
+    'chat.reply.sales': 'Crecimiento es lo que mejor hacemos. Déjame tu correo y un estratega se pondrá en contacto contigo.',
+    'chat.reply.social': 'Convirtamos a tus seguidores en una comunidad real. Déjame tu correo y te contactaremos en breve.',
+    'chat.reply.human': '¡Por supuesto! Déjame tu correo y un humano real se pondrá en contacto contigo de inmediato.',
+    'chat.reply.thanks': '¡Recibido! 🚀 Nuestro equipo se pondrá en contacto contigo muy pronto.',
+    'chat.error.email': 'Por favor ingresa un correo válido.',
 
     // Footer
     'footer.copy': '© 2026 dimenfy. Todos los derechos reservados.',
